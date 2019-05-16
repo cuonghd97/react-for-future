@@ -3,24 +3,31 @@ import React, { Component } from 'react';
 import classNames from 'classnames/bind'
 
 import './TodoItem.css'
+import check from '../../img/checked.svg'
+import uncheck from '../../img/uncheck.svg'
 
 class TodoItem extends Component {
-    constructor(props) {
-        super(props)
-        this.onItemClick = this.onItemClick.bind(this)
-    }
-    onItemClick() {
-        this.props.item.isComplete = !this.props.item.isComplete
-    }
-
     render() {
-        const { item } = this.props
+        const { item, onClick } = this.props
+        let done = uncheck
+        if (item.isComplete) {
+            done = check
+        }
         return (
-            <div onClick={this.onItemClick} className={classNames({
-                'TodoItem': true,
-                'TodoItem-done': item.isComplete
-            })}>
-                <span>{this.props.item.title}</span>
+            <div
+                className={classNames({
+                    'TodoItem': true,
+                    'TodoItem-done': item.isComplete
+                })}
+            >
+                <img
+                    alt='hi'
+                    onClick={onClick}
+                    src={done}
+                    width={32}
+                    height={32}
+                />
+                <span>{item.title}</span>
             </div>
         )
     }
