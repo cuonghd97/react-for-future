@@ -5,6 +5,7 @@ import classNames from 'classnames/bind'
 import './TodoItem.css'
 import check from '../../img/checked.svg'
 import uncheck from '../../img/uncheck.svg'
+import garbage from '../../img/garbage.svg'
 
 class TodoItem extends Component {
     render() {
@@ -22,12 +23,20 @@ class TodoItem extends Component {
             >
                 <img
                     alt='hi'
-                    onClick={onClick}
+                    onClick={ onClick }
                     src={done}
                     width={32}
                     height={32}
                 />
-                <span>{item.title}</span>
+                <p>{item.title}</p>
+                <img
+                    className='Garbage'
+                    src={garbage}
+                    alt='trash'
+                    width={32}
+                    height={32}
+                    onClick={ onClick }
+                />
             </div>
         )
     }
